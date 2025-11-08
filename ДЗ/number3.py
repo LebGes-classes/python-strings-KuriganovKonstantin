@@ -16,16 +16,7 @@ top_of_words = []
 for word in words_usage_rate:
     top_of_words.append([words_usage_rate[word],word])
 
-for i in range(len(top_of_words)):
-    for j in range(len(top_of_words)-1):
-        cnt = top_of_words[j][0]
-        cnt1 = top_of_words[j+1][0]
-
-        if cnt < cnt1:
-            better_word = top_of_words[j+1]
-            top_of_words[j+1] = top_of_words[j]
-            top_of_words[j] = better_word
-
+top_of_words.sort(reverse=True)
 
 n = 0
 

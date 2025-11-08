@@ -1,16 +1,31 @@
 from re import*
 from string import*
 
-text = input('Введите текст: ')
 
-words = findall(r'[a-zA-z]+',text)
-K = 0
+text = ''
+real_text = ''
+
+while '.' not in text:
+    additional_text = input('Введите текст: ' )
+    text += additional_text
+
+for letter in text:
+    if '.' not in real_text:
+        real_text += letter
+
+words = findall(r'[a-zA-z]+',real_text)
+real_words = []
 
 for word in words:
+    if len(word) <= 20:
+        real_words.append(word)
+
+K = 0
+
+for word in real_words:
     K = max(K,len(word))
 
 replaced_words = []
-
 alphabet_uppercase = {}
 alphabet_lowercase = {}
 number = 0
@@ -36,8 +51,5 @@ for word in words:
 
     replaced_words.append(replaced_word)
 
-print(words)
-print(replaced_words)
 print(' '.join(replaced_words))
 print(K)
-print(ascii_uppercase)
